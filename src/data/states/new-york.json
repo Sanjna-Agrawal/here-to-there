@@ -1,0 +1,40 @@
+{
+  "state": "New York",
+  "code": "NY",
+  "lastReviewed": "2026-09-15",
+  "sources": [
+    "https://dmv.ny.gov/more-info/moving-to-or-from-new-york-state",
+    "https://dmv.ny.gov/registration/surrender-return-or-turn-in-your-vehicle-plates-and-registration"
+  ],
+  "arriving": [],
+  "leaving": [
+    {
+      "id": "ny-plates",
+      "title": "Return your NY plates, then cancel NY car insurance",
+      "detail": "In that order, and only after the car is registered in your new state. Canceling insurance first gets your NY registration suspended and can affect your license.",
+      "category": "car",
+      "urgency": "urgent",
+      "dueDays": 35,
+      "showIf": { "car": ["yes"] },
+      "link": { "label": "NY DMV", "url": "https://dmv.ny.gov/more-info/moving-to-or-from-new-york-state" }
+    },
+    {
+      "id": "ny-deposit",
+      "title": "Get your NY security deposit back",
+      "detail": "New York landlords must return the deposit, or send an itemized list of deductions, within 14 days of move-out.",
+      "category": "after",
+      "urgency": "soon",
+      "dueDays": 14,
+      "showIf": { "housing": ["rent"] }
+    },
+    {
+      "id": "ny-taxes",
+      "title": "File a New York part-year resident return (IT-203)",
+      "detail": "If you lived in New York City, it also covers city tax for the months you lived there.",
+      "category": "government",
+      "urgency": "info",
+      "when": "Next tax season",
+      "link": { "label": "NY Tax", "url": "https://www.tax.ny.gov/pit/file/nonresident-faqs.htm" }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "state": "Virginia",
+  "code": "VA",
+  "lastReviewed": "2026-09-15",
+  "sources": [
+    "https://www.dmv.virginia.gov/moving/new-virginia",
+    "https://www.dmv.virginia.gov/licenses-ids/license/applying",
+    "https://www.elections.virginia.gov/",
+    "https://www.tax.virginia.gov/residency-status",
+    "https://www.marketplace.virginia.gov/special-enrollment",
+    "https://www.arlingtonva.us/Government/Programs/Taxes/Vehicles/Registration"
+  ],
+  "arriving": [
+    {
+      "id": "license",
+      "title": "Get a Virginia driver's license (REAL ID)",
+      "detail": "New residents have 60 days. Bring ID, proof of your Social Security number, and two proofs of Virginia address (a lease counts as one). Book an appointment early.",
+      "category": "government",
+      "urgency": "urgent",
+      "dueDays": 60,
+      "link": { "label": "VA DMV", "url": "https://www.dmv.virginia.gov/licenses-ids/license/applying" }
+    },
+    {
+      "id": "car-insurance",
+      "title": "1. Get Virginia car insurance",
+      "detail": "Get it before you register. Registering without insurance means a $600 fee and a suspended license.",
+      "category": "car",
+      "urgency": "urgent",
+      "dueDays": 20,
+      "showIf": { "car": ["yes"] }
+    },
+    {
+      "id": "va-inspection",
+      "title": "2. Safety inspection, plus emissions if your area requires it",
+      "detail": "Northern Virginia localities require an emissions inspection.",
+      "category": "car",
+      "urgency": "soon",
+      "dueDays": 25,
+      "showIf": { "car": ["yes"] }
+    },
+    {
+      "id": "car-register",
+      "title": "3. Title and register your car with the Virginia DMV",
+      "detail": "Due within 30 days of moving.",
+      "category": "car",
+      "urgency": "urgent",
+      "dueDays": 30,
+      "showIf": { "car": ["yes"] },
+      "link": { "label": "VA DMV", "url": "https://www.dmv.virginia.gov/moving/new-virginia" }
+    },
+    {
+      "id": "va-local-car",
+      "title": "4. Register the car with your county or city",
+      "detail": "Separate from the DMV, and it sets up personal property tax on the car. Arlington, for example, requires it within 30 days and a tax filing within 60.",
+      "category": "car",
+      "urgency": "urgent",
+      "dueDays": 30,
+      "showIf": { "car": ["yes"] },
+      "link": { "label": "Arlington example", "url": "https://www.arlingtonva.us/Government/Programs/Taxes/Vehicles/Registration" }
+    },
+    {
+      "id": "vote",
+      "title": "Register to vote in Virginia",
+      "detail": "Virginia also allows same-day registration with a provisional ballot after the regular deadline.",
+      "category": "government",
+      "urgency": "soon",
+      "dueDays": 30,
+      "link": { "label": "VA Elections", "url": "https://www.elections.virginia.gov/" }
+    },
+    {
+      "id": "state-taxes",
+      "title": "File a Virginia part-year resident return (Form 760PY)",
+      "detail": "Plus a part-year return for the state you left, if it has income tax. Keep your lease or closing papers as proof of the dates.",
+      "category": "government",
+      "urgency": "info",
+      "when": "Next tax season",
+      "link": { "label": "VA Tax", "url": "https://www.tax.virginia.gov/residency-status" }
+    },
+    {
+      "id": "withholding",
+      "title": "Switch tax withholding to Virginia (Form VA-4)",
+      "detail": "Give payroll a VA-4 and stop withholding for your old state as of your move date.",
+      "category": "government",
+      "urgency": "soon",
+      "dueDays": 14,
+      "showIf": { "payroll": ["yes", "notsure"] }
+    },
+    {
+      "id": "health",
+      "title": "Update your health insurance",
+      "detail": "Employer plan: update your address and check which local doctors are covered. Marketplace plan: moving lets you choose a plan through Virginia's Insurance Marketplace, usually within 60 days.",
+      "category": "government",
+      "urgency": "soon",
+      "dueDays": 60,
+      "link": { "label": "VA Marketplace", "url": "https://www.marketplace.virginia.gov/special-enrollment" }
+    }
+  ],
+  "leaving": []
+}
