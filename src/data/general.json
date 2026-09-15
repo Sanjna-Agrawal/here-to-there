@@ -1,0 +1,275 @@
+[
+  {
+    "id": "usps",
+    "title": "Set up USPS mail forwarding",
+    "detail": "Set the start date to your move date. Verifying your identity online costs about $1–2. Forwarding lasts 12 months.",
+    "category": "before",
+    "urgency": "urgent",
+    "dueDays": -14,
+    "link": { "label": "USPS", "url": "https://moversguide.usps.com/" }
+  },
+  {
+    "id": "landlord-out",
+    "title": "Plan your move-out",
+    "detail": "Give your landlord your new address in writing and take photos at move-out so your deposit comes back.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -7,
+    "showIf": { "housing": ["rent"] }
+  },
+  {
+    "id": "utilities-stop",
+    "title": "Schedule shutoff of your current utilities",
+    "detail": "Electric, gas, and water. Ask for a final meter reading on move-out day.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -7
+  },
+  {
+    "id": "internet-old",
+    "title": "Cancel or transfer internet and return equipment",
+    "detail": "Returning the router or modem late usually means a fee.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -7
+  },
+  {
+    "id": "utilities-start",
+    "title": "Set up utilities at the new place",
+    "detail": "Ask the landlord or seller which utilities you need to set up in your own name.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -3
+  },
+  {
+    "id": "internet-new",
+    "title": "Book internet install for move-in day",
+    "detail": "Install dates fill up at the start of the month.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -10
+  },
+  {
+    "id": "renters-insurance",
+    "title": "Renters insurance for the new address",
+    "detail": "Most leases require proof before move-in.",
+    "category": "before",
+    "urgency": "urgent",
+    "dueDays": -1,
+    "showIf": { "housing": ["rent"] }
+  },
+  {
+    "id": "home-insurance",
+    "title": "Homeowners insurance for the new home",
+    "detail": "Your lender will need proof before closing.",
+    "category": "before",
+    "urgency": "urgent",
+    "dueDays": -7,
+    "showIf": { "housing": ["own"] }
+  },
+  {
+    "id": "movers",
+    "title": "Confirm movers and book building time slots",
+    "detail": "Reserve elevators or loading docks at both places, and check what the movers' insurance covers.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -7
+  },
+  {
+    "id": "prescriptions",
+    "title": "Move prescriptions to a pharmacy near your new home",
+    "detail": "Fill anything you need before the move so nothing runs out in between.",
+    "category": "before",
+    "urgency": "info",
+    "dueDays": -3
+  },
+  {
+    "id": "local-memberships",
+    "title": "Cancel local-only memberships",
+    "detail": "Gym, parking, storage, and other local subscriptions. Check their notice periods.",
+    "category": "before",
+    "urgency": "info",
+    "dueDays": -14
+  },
+  {
+    "id": "vote",
+    "title": "Register to vote in your new state",
+    "detail": "Deadlines are often a few weeks before an election.",
+    "category": "government",
+    "urgency": "soon",
+    "dueDays": 30,
+    "link": { "label": "vote.gov", "url": "https://vote.gov/" }
+  },
+  {
+    "id": "irs",
+    "title": "Update your address with the IRS",
+    "detail": "File Form 8822, or just use your new address on your next return.",
+    "category": "government",
+    "urgency": "info",
+    "dueDays": 60,
+    "link": { "label": "Form 8822", "url": "https://www.irs.gov/forms-pubs/about-form-8822" }
+  },
+  {
+    "id": "state-taxes",
+    "title": "Plan for part-year state tax returns",
+    "detail": "Moving mid-year usually means a part-year return in both states. Keep your lease or closing papers as proof of the dates.",
+    "category": "government",
+    "urgency": "info",
+    "when": "Next tax season"
+  },
+  {
+    "id": "withholding",
+    "title": "Update the state tax withheld from your pay",
+    "detail": "Ask payroll to switch withholding to your new state as of your move date.",
+    "category": "government",
+    "urgency": "soon",
+    "dueDays": 14,
+    "showIf": { "payroll": ["yes", "notsure"] }
+  },
+  {
+    "id": "health",
+    "title": "Update your health insurance",
+    "detail": "Employer plans need your new address, and doctors in the new area may not be covered. Marketplace plans usually need a new plan in your new state. Moving lets you enroll outside open enrollment, usually within 60 days.",
+    "category": "government",
+    "urgency": "soon",
+    "dueDays": 60,
+    "link": { "label": "HealthCare.gov", "url": "https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/" }
+  },
+  {
+    "id": "car-insurance",
+    "title": "Get car insurance in your new state",
+    "detail": "Most states require a policy from the new state before you can register the car there.",
+    "category": "car",
+    "urgency": "urgent",
+    "dueDays": 20,
+    "showIf": { "car": ["yes"] }
+  },
+  {
+    "id": "car-register",
+    "title": "Title and register your car in your new state",
+    "detail": "Check your new state's DMV for the deadline and any inspection needed first.",
+    "category": "car",
+    "urgency": "urgent",
+    "dueDays": 30,
+    "showIf": { "car": ["yes"] }
+  },
+  {
+    "id": "license",
+    "title": "Get a driver's license in your new state",
+    "detail": "Most states give new residents 30–90 days.",
+    "category": "government",
+    "urgency": "urgent",
+    "dueDays": 30
+  },
+  {
+    "id": "banks",
+    "title": "Banks and credit cards",
+    "detail": "Also update the billing address saved in Apple Pay, Google Pay, and your browser's autofill.",
+    "category": "money",
+    "urgency": "soon",
+    "dueDays": 0
+  },
+  {
+    "id": "investments",
+    "title": "Investment, retirement, and student loan accounts",
+    "detail": "Tax forms are mailed in January, so update these before year-end.",
+    "category": "money",
+    "urgency": "soon",
+    "dueDays": 30
+  },
+  {
+    "id": "tax-senders",
+    "title": "Employer, clients, and anyone who sends you tax forms",
+    "detail": "Anyone who sends you a W-2 or 1099 needs your new address before January.",
+    "category": "money",
+    "urgency": "soon",
+    "dueDays": 30
+  },
+  {
+    "id": "phone",
+    "title": "Phone carrier",
+    "detail": "Update the billing address and the emergency (911) address used for Wi-Fi calling.",
+    "category": "money",
+    "urgency": "info",
+    "dueDays": 0
+  },
+  {
+    "id": "shopping",
+    "title": "Shopping and delivery apps",
+    "detail": "Delete the old address so orders don't go there by mistake.",
+    "category": "money",
+    "urgency": "info",
+    "dueDays": 0
+  },
+  {
+    "id": "medical-records",
+    "title": "Doctors, dentist, and pharmacy records",
+    "detail": "Update your address, or ask for records to be transferred if you're switching providers.",
+    "category": "money",
+    "urgency": "info",
+    "dueDays": 30
+  },
+  {
+    "id": "junk-mail",
+    "title": "Stop catalogs and junk mail",
+    "detail": "DMAchoice (small fee), or each store's mail preferences page.",
+    "category": "money",
+    "urgency": "info",
+    "when": "Anytime",
+    "link": { "label": "DMAchoice", "url": "https://www.dmachoice.org/" }
+  },
+  {
+    "id": "biz-state",
+    "title": "Update your business address with the state where it's registered",
+    "detail": "Ask an accountant whether you also need to register the business in your new state.",
+    "category": "business",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": { "business": ["yes"] }
+  },
+  {
+    "id": "biz-irs",
+    "title": "Update the business address with the IRS (Form 8822-B)",
+    "detail": "This keeps IRS letters and notices going to the right place.",
+    "category": "business",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": { "business": ["yes"] },
+    "link": { "label": "Form 8822-B", "url": "https://www.irs.gov/forms-pubs/about-form-8822-b" }
+  },
+  {
+    "id": "biz-accounts",
+    "title": "Business bank, payments, domain contact, and invoices",
+    "detail": "Anything that shows a business address, including your website's footer.",
+    "category": "business",
+    "urgency": "info",
+    "dueDays": 30,
+    "showIf": { "business": ["yes"] }
+  },
+  {
+    "id": "forwarded-mail",
+    "title": "Treat every forwarded letter as an account you missed",
+    "detail": "Anything with a yellow USPS forwarding sticker still has your old address. Add it on the Accounts tab.",
+    "category": "after",
+    "urgency": "info",
+    "when": "Ongoing"
+  },
+  {
+    "id": "deposit-follow-up",
+    "title": "Follow up on your security deposit",
+    "detail": "If it hasn't arrived within your old state's deadline, send the landlord a written request.",
+    "category": "after",
+    "urgency": "soon",
+    "dueDays": 21,
+    "showIf": { "housing": ["rent"] }
+  },
+  {
+    "id": "credit-report",
+    "title": "Check your credit report for the new address",
+    "detail": "A couple of months after the move, once accounts have been updated.",
+    "category": "after",
+    "urgency": "info",
+    "dueDays": 75,
+    "link": { "label": "Credit report", "url": "https://www.annualcreditreport.com/" }
+  }
+]
