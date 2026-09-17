@@ -35,11 +35,11 @@ The most useful contribution is **adding or updating a state**.
 | Field | Notes |
 | --- | --- |
 | `id` | Reusing an id from `src/data/general.json` (like `license`, `vote`, `car-register`, `state-taxes`, `withholding`, `health`) **replaces** the general task. A new id adds a task. |
-| `category` | `before`, `car`, `government`, `money`, `business`, `after` |
+| `category` | `before`, `car`, `government`, `money`, `business`, `life`, `after` |
 | `urgency` | `urgent` (legal deadline or penalty), `soon`, `info` |
 | `dueDays` | Days after the move date. Use a negative number for before the move. |
 | `when` | Use instead of `dueDays` for timing like `"Next tax season"`. |
-| `showIf` | Optional, e.g. `{ "car": ["yes"] }`. Answer keys: `car` (yes/plan/no), `housing` (rent/own), `payroll` (yes/no/notsure), `health` (employer/marketplace/other), `business` (yes/no). |
+| `showIf` | Optional, e.g. `{ "vehicles": ["car"] }`. Keys and values come from `src/data/questions.json`. Unanswered questions never hide a task. |
 
 ## Rules for state data
 
@@ -47,6 +47,10 @@ The most useful contribution is **adding or updating a state**.
 - Put the deadline in `detail` in plain words, exactly as the source states it.
 - Update `lastReviewed` whenever you check a file again.
 - Run `npm run check-data` before opening a pull request.
+
+## Add or change a question
+
+Questions live in `src/data/questions.json`. Each has a `key`, the question `q`, a short `why`, a `type` (`single` or `multi`), and `opts` as `[value, label]` pairs. Add `askIf` to make it a follow-up, e.g. `{ "oldHousing": ["own"] }`. Only add a question if at least one task uses it in `showIf`.
 
 ## Code changes
 

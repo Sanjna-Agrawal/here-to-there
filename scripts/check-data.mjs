@@ -1,15 +1,10 @@
 // Validates the task data files. Run with: npm run check-data
 import { readFileSync, readdirSync } from 'node:fs';
 
-const CATEGORIES = ['before', 'car', 'government', 'money', 'business', 'after'];
+const CATEGORIES = ['before', 'car', 'government', 'money', 'business', 'life', 'after'];
 const URGENCY = ['urgent', 'soon', 'info'];
-const ANSWERS = {
-  car: ['yes', 'plan', 'no'],
-  housing: ['rent', 'own'],
-  payroll: ['yes', 'no', 'notsure'],
-  health: ['employer', 'marketplace', 'other'],
-  business: ['yes', 'no'],
-};
+const questions = JSON.parse(readFileSync('src/data/questions.json', 'utf8'));
+const ANSWERS = Object.fromEntries(questions.map((q) => [q.key, q.opts.map((o) => o[0])]));
 const errors = [];
 
 function checkTask(t, where) {
@@ -21,10 +16,18 @@ function checkTask(t, where) {
   if (!URGENCY.includes(t.urgency)) errors.push(`${at}: urgency must be one of ${URGENCY.join(', ')}`);
   if (t.dueDays !== undefined && !Number.isInteger(t.dueDays)) errors.push(`${at}: dueDays must be a whole number`);
   if (t.link && !/^https:\/\//.test(t.link.url ?? '')) errors.push(`${at}: link.url must start with https://`);
-  for (const [k, v] of Object.entries(t.showIf ?? {})) {
-    if (!ANSWERS[k]) errors.push(`${at}: unknown showIf key "${k}"`);
-    else for (const val of v) if (!ANSWERS[k].includes(val)) errors.push(`${at}: showIf.${k} has unknown value "${val}"`);
+  checkCondition(t.showIf, at, 'showIf');
+}
+
+function checkCondition(cond, at, label) {
+  for (const [k, v] of Object.entries(cond ?? {})) {
+    if (!ANSWERS[k]) errors.push(`${at}: unknown ${label} key "${k}"`);
+    else for (const val of v) if (!ANSWERS[k].includes(val)) errors.push(`${at}: ${label}.${k} has unknown value "${val}"`);
   }
+}
+for (const q of questions) {
+  if (!q.key || !q.q || !q.why || !['single', 'multi'].includes(q.type) || !q.opts?.length) errors.push(`questions.json → ${q.key}: needs key, q, why, type and opts`);
+  checkCondition(q.askIf, `questions.json → ${q.key}`, 'askIf');
 }
 
 const general = JSON.parse(readFileSync('src/data/general.json', 'utf8'));

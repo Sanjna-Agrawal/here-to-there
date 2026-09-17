@@ -38,7 +38,29 @@ declare global {
   }
 }
 
-export const gmailConfigured = Boolean(import.meta.env.VITE_GOOGLE_CLIENT_ID);
+const CLIENT_KEY = 'here-to-there:google-client-id';
+
+/** Client ID from .env.local, or one pasted into the app (saved in this browser only). */
+export function getClientId(): string {
+  const fromEnv = (import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined) ?? '';
+  if (fromEnv) return fromEnv;
+  try {
+    return localStorage.getItem(CLIENT_KEY) ?? '';
+  } catch {
+    return '';
+  }
+}
+
+export function setClientId(id: string): boolean {
+  const clean = id.trim();
+  if (!/^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$/.test(clean)) return false;
+  try {
+    localStorage.setItem(CLIENT_KEY, clean);
+  } catch {
+    return false;
+  }
+  return true;
+}
 
 function loadGoogleScript(): Promise<void> {
   if (window.google?.accounts) return Promise.resolve();
@@ -55,7 +77,7 @@ async function getToken(): Promise<string> {
   await loadGoogleScript();
   return new Promise((resolve, reject) => {
     const client = window.google!.accounts.oauth2.initTokenClient({
-      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID as string,
+      client_id: getClientId(),
       scope: SCOPE,
       callback: (resp) => (resp.access_token ? resolve(resp.access_token) : reject(new Error(resp.error ?? 'Gmail access was not granted.'))),
     });
@@ -136,7 +158,8 @@ export async function scanGmail(oldAddress: string, onProgress: (msg: string) =>
       for (const { from, date } of batch) {
         const parsed = parseFrom(from);
         if (!parsed) continue;
-        const iso = date ? new Date(date).toISOString().slice(0, 10) : '';
+        const parsedDate = date ? new Date(date) : null;
+        const iso = parsedDate && !Number.isNaN(parsedDate.getTime()) ? parsedDate.toISOString().slice(0, 10) : '';
         const g = groups.get(parsed.domain) ?? {
           id: parsed.domain,
           name: parsed.name,

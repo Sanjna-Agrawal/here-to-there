@@ -18,7 +18,10 @@
       "category": "government",
       "urgency": "urgent",
       "dueDays": 60,
-      "link": { "label": "VA DMV", "url": "https://www.dmv.virginia.gov/licenses-ids/license/applying" }
+      "link": {
+        "label": "VA DMV",
+        "url": "https://www.dmv.virginia.gov/licenses-ids/license/applying"
+      }
     },
     {
       "id": "car-insurance",
@@ -27,7 +30,11 @@
       "category": "car",
       "urgency": "urgent",
       "dueDays": 20,
-      "showIf": { "car": ["yes"] }
+      "showIf": {
+        "vehicles": [
+          "car"
+        ]
+      }
     },
     {
       "id": "va-inspection",
@@ -36,7 +43,11 @@
       "category": "car",
       "urgency": "soon",
       "dueDays": 25,
-      "showIf": { "car": ["yes"] }
+      "showIf": {
+        "vehicles": [
+          "car"
+        ]
+      }
     },
     {
       "id": "car-register",
@@ -45,8 +56,15 @@
       "category": "car",
       "urgency": "urgent",
       "dueDays": 30,
-      "showIf": { "car": ["yes"] },
-      "link": { "label": "VA DMV", "url": "https://www.dmv.virginia.gov/moving/new-virginia" }
+      "showIf": {
+        "vehicles": [
+          "car"
+        ]
+      },
+      "link": {
+        "label": "VA DMV",
+        "url": "https://www.dmv.virginia.gov/moving/new-virginia"
+      }
     },
     {
       "id": "va-local-car",
@@ -55,8 +73,15 @@
       "category": "car",
       "urgency": "urgent",
       "dueDays": 30,
-      "showIf": { "car": ["yes"] },
-      "link": { "label": "Arlington example", "url": "https://www.arlingtonva.us/Government/Programs/Taxes/Vehicles/Registration" }
+      "showIf": {
+        "vehicles": [
+          "car"
+        ]
+      },
+      "link": {
+        "label": "Arlington example",
+        "url": "https://www.arlingtonva.us/Government/Programs/Taxes/Vehicles/Registration"
+      }
     },
     {
       "id": "vote",
@@ -65,7 +90,10 @@
       "category": "government",
       "urgency": "soon",
       "dueDays": 30,
-      "link": { "label": "VA Elections", "url": "https://www.elections.virginia.gov/" }
+      "link": {
+        "label": "VA Elections",
+        "url": "https://www.elections.virginia.gov/"
+      }
     },
     {
       "id": "state-taxes",
@@ -74,7 +102,10 @@
       "category": "government",
       "urgency": "info",
       "when": "Next tax season",
-      "link": { "label": "VA Tax", "url": "https://www.tax.virginia.gov/residency-status" }
+      "link": {
+        "label": "VA Tax",
+        "url": "https://www.tax.virginia.gov/residency-status"
+      }
     },
     {
       "id": "withholding",
@@ -83,7 +114,11 @@
       "category": "government",
       "urgency": "soon",
       "dueDays": 14,
-      "showIf": { "payroll": ["yes", "notsure"] }
+      "showIf": {
+        "work": [
+          "employee"
+        ]
+      }
     },
     {
       "id": "health",
@@ -92,7 +127,17 @@
       "category": "government",
       "urgency": "soon",
       "dueDays": 60,
-      "link": { "label": "VA Marketplace", "url": "https://www.marketplace.virginia.gov/special-enrollment" }
+      "link": {
+        "label": "VA Marketplace",
+        "url": "https://www.marketplace.virginia.gov/special-enrollment"
+      },
+      "showIf": {
+        "health": [
+          "employer",
+          "marketplace",
+          "other"
+        ]
+      }
     }
   ],
   "leaving": []

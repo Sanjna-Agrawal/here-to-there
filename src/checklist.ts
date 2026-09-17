@@ -1,22 +1,26 @@
 import general from './data/general.json';
 import { STATE_RULES } from './data/states';
-import type { Account, AppState, Answers, CategoryId, Task } from './types';
+import type { Account, AppState, Answers, CategoryId, Condition, Task } from './types';
 
 export const CATEGORIES: { id: CategoryId; name: string; sub: string }[] = [
   { id: 'before', name: 'Before you move', sub: 'The weeks before moving day' },
   { id: 'car', name: 'Car', sub: 'The order matters' },
   { id: 'government', name: 'Government', sub: 'License, voting, taxes, health' },
   { id: 'money', name: 'Money and everyday accounts', sub: 'Where your address is on file' },
-  { id: 'business', name: 'Your business', sub: 'Company records follow you too' },
+  { id: 'business', name: 'Work and business', sub: 'Payroll, clients and company records' },
+  { id: 'life', name: 'Family, health and licenses', sub: 'Kids, pets, prescriptions, benefits and paperwork' },
   { id: 'accounts', name: 'Your accounts', sub: 'From the Accounts tab' },
   { id: 'after', name: 'After you arrive', sub: 'The weeks after moving day' },
 ];
 
-function matches(task: Task, answers: Answers): boolean {
-  if (!task.showIf) return true;
-  return (Object.keys(task.showIf) as (keyof Answers)[]).every((key) => {
-    const allowed = task.showIf![key] as string[] | undefined;
-    return !allowed || allowed.includes(answers[key]);
+/** True when every key in the condition is unanswered or has an answer that includes an allowed value. */
+export function matchesCondition(cond: Condition | undefined, answers: Answers): boolean {
+  if (!cond) return true;
+  return Object.entries(cond).every(([key, allowed]) => {
+    const a = answers[key];
+    const given = Array.isArray(a) ? a : a ? [a] : [];
+    // Unanswered questions don't hide tasks: better to show one extra item than miss one.
+    return given.length === 0 || given.some((v) => allowed.includes(v));
   });
 }
 
@@ -40,7 +44,7 @@ export function buildTasks(state: AppState): Task[] {
   const from = STATE_RULES[state.move.fromState];
   for (const t of to?.arriving ?? []) byId.set(t.id, t);
   for (const t of from?.leaving ?? []) byId.set(t.id, t);
-  const tasks = [...byId.values()].filter((t) => matches(t, state.answers));
+  const tasks = [...byId.values()].filter((t) => matchesCondition(t.showIf, state.answers));
   const accounts = state.accounts.filter((a) => a.action === 'update' || a.action === 'stop').map(accountTask);
   return [...tasks, ...accounts].sort((a, b) => (a.dueDays ?? 999) - (b.dueDays ?? 999));
 }

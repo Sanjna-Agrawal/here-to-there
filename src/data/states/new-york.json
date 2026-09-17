@@ -15,8 +15,15 @@
       "category": "car",
       "urgency": "urgent",
       "dueDays": 35,
-      "showIf": { "car": ["yes"] },
-      "link": { "label": "NY DMV", "url": "https://dmv.ny.gov/more-info/moving-to-or-from-new-york-state" }
+      "showIf": {
+        "vehicles": [
+          "car"
+        ]
+      },
+      "link": {
+        "label": "NY DMV",
+        "url": "https://dmv.ny.gov/more-info/moving-to-or-from-new-york-state"
+      }
     },
     {
       "id": "ny-deposit",
@@ -25,7 +32,11 @@
       "category": "after",
       "urgency": "soon",
       "dueDays": 14,
-      "showIf": { "housing": ["rent"] }
+      "showIf": {
+        "oldHousing": [
+          "rent"
+        ]
+      }
     },
     {
       "id": "ny-taxes",
@@ -34,7 +45,10 @@
       "category": "government",
       "urgency": "info",
       "when": "Next tax season",
-      "link": { "label": "NY Tax", "url": "https://www.tax.ny.gov/pit/file/nonresident-faqs.htm" }
+      "link": {
+        "label": "NY Tax",
+        "url": "https://www.tax.ny.gov/pit/file/nonresident-faqs.htm"
+      }
     }
   ]
 }

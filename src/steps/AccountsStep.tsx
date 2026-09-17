@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { safeUrl, type StepProps } from './shared';
-import { gmailConfigured, scanGmail } from '../gmail';
+import { getClientId, scanGmail, setClientId } from '../gmail';
 import type { Account, AccountAction } from '../types';
 
 const CATS = ['Money', 'Shopping', 'Health', 'Work', 'Subscriptions', 'Government', 'Other'];
@@ -20,6 +20,17 @@ export default function AccountsStep({ state, update, go }: StepProps) {
   const [progress, setProgress] = useState('');
   const [error, setError] = useState('');
   const [filter, setFilter] = useState<'todo' | 'all'>('all');
+  const [configured, setConfigured] = useState(() => Boolean(getClientId()));
+  const [clientInput, setClientInput] = useState('');
+
+  const saveClient = () => {
+    if (setClientId(clientInput)) {
+      setConfigured(true);
+      setError('');
+    } else {
+      setError('That doesn\u2019t look like a Google client ID. It ends in .apps.googleusercontent.com.');
+    }
+  };
 
   const add = () => {
     const n = name.trim();
@@ -78,12 +89,26 @@ export default function AccountsStep({ state, update, go }: StepProps) {
             <h3>Scan Gmail</h3>
             <p className="hint">Reads only who emailed you and when, never the emails themselves. Everything stays in this browser.</p>
           </div>
-          {gmailConfigured ? (
+          {configured && (
             <button className="btn" onClick={scan} disabled={scanning}>{scanning ? 'Scanning…' : 'Connect Gmail'}</button>
-          ) : (
-            <a className="btn ghost" href="https://github.com/Sanjna-Agrawal/here-to-there/blob/main/docs/google-setup.md" target="_blank" rel="noopener">Set up Gmail scan</a>
           )}
         </div>
+        {!configured && (
+          <form className="pair" onSubmit={(e) => { e.preventDefault(); saveClient(); }}>
+            <input
+              className="input"
+              aria-label="Google client ID"
+              value={clientInput}
+              placeholder="Paste your Google client ID"
+              onChange={(e) => setClientInput(e.target.value)}
+            />
+            <button className="btn" type="submit">Save</button>
+            <p className="hint">
+              One-time setup, about 10 minutes.{' '}
+              <a href="https://github.com/Sanjna-Agrawal/here-to-there/blob/main/docs/google-setup.md" target="_blank" rel="noopener">How to get one</a>
+            </p>
+          </form>
+        )}
         {progress && <p className="hint" aria-live="polite">{progress}</p>}
         {error && <p className="error" role="alert">{error}</p>}
       </div>

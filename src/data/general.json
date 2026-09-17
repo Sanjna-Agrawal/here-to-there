@@ -6,7 +6,10 @@
     "category": "before",
     "urgency": "urgent",
     "dueDays": -14,
-    "link": { "label": "USPS", "url": "https://moversguide.usps.com/" }
+    "link": {
+      "label": "USPS",
+      "url": "https://moversguide.usps.com/"
+    }
   },
   {
     "id": "landlord-out",
@@ -15,7 +18,11 @@
     "category": "before",
     "urgency": "soon",
     "dueDays": -7,
-    "showIf": { "housing": ["rent"] }
+    "showIf": {
+      "oldHousing": [
+        "rent"
+      ]
+    }
   },
   {
     "id": "utilities-stop",
@@ -56,7 +63,11 @@
     "category": "before",
     "urgency": "urgent",
     "dueDays": -1,
-    "showIf": { "housing": ["rent"] }
+    "showIf": {
+      "newHousing": [
+        "rent"
+      ]
+    }
   },
   {
     "id": "home-insurance",
@@ -65,23 +76,39 @@
     "category": "before",
     "urgency": "urgent",
     "dueDays": -7,
-    "showIf": { "housing": ["own"] }
+    "showIf": {
+      "newHousing": [
+        "buy"
+      ]
+    }
   },
   {
     "id": "movers",
-    "title": "Confirm movers and book building time slots",
-    "detail": "Reserve elevators or loading docks at both places, and check what the movers' insurance covers.",
+    "title": "Book moving day and building time slots",
+    "detail": "Reserve elevators, loading docks, or street parking at both places.",
     "category": "before",
     "urgency": "soon",
-    "dueDays": -7
+    "dueDays": -7,
+    "showIf": {
+      "moveMethod": [
+        "movers",
+        "diy",
+        "notsure"
+      ]
+    }
   },
   {
     "id": "prescriptions",
     "title": "Move prescriptions to a pharmacy near your new home",
     "detail": "Fill anything you need before the move so nothing runs out in between.",
-    "category": "before",
+    "category": "life",
     "urgency": "info",
-    "dueDays": -3
+    "dueDays": -3,
+    "showIf": {
+      "prescriptions": [
+        "yes"
+      ]
+    }
   },
   {
     "id": "local-memberships",
@@ -98,7 +125,10 @@
     "category": "government",
     "urgency": "soon",
     "dueDays": 30,
-    "link": { "label": "vote.gov", "url": "https://vote.gov/" }
+    "link": {
+      "label": "vote.gov",
+      "url": "https://vote.gov/"
+    }
   },
   {
     "id": "irs",
@@ -107,7 +137,10 @@
     "category": "government",
     "urgency": "info",
     "dueDays": 60,
-    "link": { "label": "Form 8822", "url": "https://www.irs.gov/forms-pubs/about-form-8822" }
+    "link": {
+      "label": "Form 8822",
+      "url": "https://www.irs.gov/forms-pubs/about-form-8822"
+    }
   },
   {
     "id": "state-taxes",
@@ -124,7 +157,11 @@
     "category": "government",
     "urgency": "soon",
     "dueDays": 14,
-    "showIf": { "payroll": ["yes", "notsure"] }
+    "showIf": {
+      "work": [
+        "employee"
+      ]
+    }
   },
   {
     "id": "health",
@@ -133,7 +170,17 @@
     "category": "government",
     "urgency": "soon",
     "dueDays": 60,
-    "link": { "label": "HealthCare.gov", "url": "https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/" }
+    "link": {
+      "label": "HealthCare.gov",
+      "url": "https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/"
+    },
+    "showIf": {
+      "health": [
+        "employer",
+        "marketplace",
+        "other"
+      ]
+    }
   },
   {
     "id": "car-insurance",
@@ -142,7 +189,11 @@
     "category": "car",
     "urgency": "urgent",
     "dueDays": 20,
-    "showIf": { "car": ["yes"] }
+    "showIf": {
+      "vehicles": [
+        "car"
+      ]
+    }
   },
   {
     "id": "car-register",
@@ -151,7 +202,11 @@
     "category": "car",
     "urgency": "urgent",
     "dueDays": 30,
-    "showIf": { "car": ["yes"] }
+    "showIf": {
+      "vehicles": [
+        "car"
+      ]
+    }
   },
   {
     "id": "license",
@@ -216,7 +271,10 @@
     "category": "money",
     "urgency": "info",
     "when": "Anytime",
-    "link": { "label": "DMAchoice", "url": "https://www.dmachoice.org/" }
+    "link": {
+      "label": "DMAchoice",
+      "url": "https://www.dmachoice.org/"
+    }
   },
   {
     "id": "biz-state",
@@ -225,7 +283,11 @@
     "category": "business",
     "urgency": "soon",
     "dueDays": 30,
-    "showIf": { "business": ["yes"] }
+    "showIf": {
+      "work": [
+        "business"
+      ]
+    }
   },
   {
     "id": "biz-irs",
@@ -234,8 +296,15 @@
     "category": "business",
     "urgency": "soon",
     "dueDays": 30,
-    "showIf": { "business": ["yes"] },
-    "link": { "label": "Form 8822-B", "url": "https://www.irs.gov/forms-pubs/about-form-8822-b" }
+    "showIf": {
+      "work": [
+        "business"
+      ]
+    },
+    "link": {
+      "label": "Form 8822-B",
+      "url": "https://www.irs.gov/forms-pubs/about-form-8822-b"
+    }
   },
   {
     "id": "biz-accounts",
@@ -244,7 +313,11 @@
     "category": "business",
     "urgency": "info",
     "dueDays": 30,
-    "showIf": { "business": ["yes"] }
+    "showIf": {
+      "work": [
+        "business"
+      ]
+    }
   },
   {
     "id": "forwarded-mail",
@@ -261,7 +334,11 @@
     "category": "after",
     "urgency": "soon",
     "dueDays": 21,
-    "showIf": { "housing": ["rent"] }
+    "showIf": {
+      "oldHousing": [
+        "rent"
+      ]
+    }
   },
   {
     "id": "credit-report",
@@ -270,6 +347,455 @@
     "category": "after",
     "urgency": "info",
     "dueDays": 75,
-    "link": { "label": "Credit report", "url": "https://www.annualcreditreport.com/" }
+    "link": {
+      "label": "Credit report",
+      "url": "https://www.annualcreditreport.com/"
+    }
+  },
+  {
+    "id": "movers-check",
+    "title": "Check that your mover is registered",
+    "detail": "Interstate movers must have a USDOT number. Look them up in the FMCSA database, get a written estimate, and expect the 'Your Rights and Responsibilities When You Move' booklet.",
+    "category": "before",
+    "urgency": "urgent",
+    "dueDays": -30,
+    "showIf": {
+      "moveMethod": [
+        "movers"
+      ]
+    },
+    "link": {
+      "label": "FMCSA",
+      "url": "https://www.fmcsa.dot.gov/protect-your-move"
+    }
+  },
+  {
+    "id": "truck-book",
+    "title": "Reserve your truck or moving container",
+    "detail": "Month-end dates book up first. Check whether either street needs a parking permit for the truck.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -30,
+    "showIf": {
+      "moveMethod": [
+        "diy"
+      ]
+    }
+  },
+  {
+    "id": "plants-pets-rules",
+    "title": "Check your new state's rules for bringing plants",
+    "detail": "Some states restrict plants, soil and firewood crossing the border.",
+    "category": "before",
+    "urgency": "info",
+    "dueDays": -14
+  },
+  {
+    "id": "sell-home",
+    "title": "Plan the sale of your old home",
+    "detail": "Keep homeowners insurance until closing, and tell your insurer if the home will sit empty.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -30,
+    "showIf": {
+      "oldHomePlan": [
+        "sell"
+      ]
+    }
+  },
+  {
+    "id": "rent-out-home",
+    "title": "Set up your old home as a rental",
+    "detail": "Switch to a landlord insurance policy, decide who handles repairs, and expect to file a nonresident return in the old state for the rental income.",
+    "category": "before",
+    "urgency": "soon",
+    "dueDays": -30,
+    "showIf": {
+      "oldHomePlan": [
+        "rentout"
+      ]
+    }
+  },
+  {
+    "id": "vacant-home",
+    "title": "Tell your insurer the old home will be empty",
+    "detail": "Many policies limit coverage for homes left vacant for more than a month or two.",
+    "category": "before",
+    "urgency": "urgent",
+    "dueDays": -7,
+    "showIf": {
+      "oldHomePlan": [
+        "keep",
+        "notsure"
+      ]
+    }
+  },
+  {
+    "id": "homestead",
+    "title": "Check for a homestead or property tax break",
+    "detail": "Many counties lower property taxes on your main home, but you usually have to apply.",
+    "category": "government",
+    "urgency": "soon",
+    "dueDays": 60,
+    "showIf": {
+      "newHousing": [
+        "buy"
+      ]
+    }
+  },
+  {
+    "id": "car-plan",
+    "title": "Buying a car after the move",
+    "detail": "Get your new state's license first if you can, and register the car there from the start.",
+    "category": "car",
+    "urgency": "info",
+    "when": "When you buy",
+    "showIf": {
+      "vehicles": [
+        "plan"
+      ]
+    }
+  },
+  {
+    "id": "other-vehicles",
+    "title": "Title and register your motorcycle, boat, trailer, or RV",
+    "detail": "Boats are often registered with the state's wildlife or boating agency rather than the DMV.",
+    "category": "car",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": {
+      "vehicles": [
+        "motorcycle",
+        "boat",
+        "rv"
+      ]
+    }
+  },
+  {
+    "id": "employer-hr",
+    "title": "Tell HR about your new state",
+    "detail": "Do it before you move. Payroll taxes change, and some employers can't pay people in every state.",
+    "category": "business",
+    "urgency": "urgent",
+    "dueDays": -30,
+    "showIf": {
+      "work": [
+        "employee"
+      ],
+      "jobMove": [
+        "remote",
+        "transfer",
+        "notsure"
+      ]
+    }
+  },
+  {
+    "id": "new-job-paperwork",
+    "title": "Use your new address on new-job paperwork",
+    "detail": "Your W-4 and your new state's withholding form should both show it.",
+    "category": "business",
+    "urgency": "soon",
+    "dueDays": 0,
+    "showIf": {
+      "jobMove": [
+        "newjob"
+      ]
+    }
+  },
+  {
+    "id": "self-employed",
+    "title": "Update your address with clients and payment platforms",
+    "detail": "Anyone who sends you a 1099, plus Stripe, PayPal, Upwork and similar. Check whether your new city or county requires a business license, and switch estimated tax payments to your new state.",
+    "category": "business",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": {
+      "work": [
+        "self"
+      ]
+    }
+  },
+  {
+    "id": "student",
+    "title": "Update your address with your school and financial aid",
+    "detail": "In-state tuition usually requires living in the state for about 12 months first, with proof like a lease and a state ID.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": {
+      "college": [
+        "yes"
+      ]
+    }
+  },
+  {
+    "id": "retired",
+    "title": "Update your pension and retirement accounts",
+    "detail": "Also check how your new state taxes retirement income, and update state tax withholding.",
+    "category": "money",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": {
+      "work": [
+        "retired"
+      ]
+    }
+  },
+  {
+    "id": "unemployment",
+    "title": "Report the move to your unemployment office",
+    "detail": "Keep filing with the state that pays your benefits, and ask how job-search rules work from the new state.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "benefits": [
+        "unemployment"
+      ]
+    }
+  },
+  {
+    "id": "snap",
+    "title": "Cancel SNAP in your old state and apply in the new one",
+    "detail": "You can't get SNAP in two states at once. Report the move, ask for a closure letter, and apply right away. Approval can take weeks, so plan for a gap.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "benefits": [
+        "snap"
+      ]
+    },
+    "link": {
+      "label": "NCOA guide",
+      "url": "https://www.ncoa.org/article/can-i-transfer-my-benefits-across-state-lines/"
+    }
+  },
+  {
+    "id": "wic",
+    "title": "Transfer WIC to your new state",
+    "detail": "Ask your current WIC office for a transfer card, then contact the new state WIC office.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "benefits": [
+        "wic"
+      ]
+    }
+  },
+  {
+    "id": "ssa",
+    "title": "Update your address with Social Security",
+    "detail": "Federal payments continue after you update your address. SSI amounts can change if the new state pays a different supplement.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "benefits": [
+        "ssi",
+        "socialsecurity"
+      ]
+    },
+    "link": {
+      "label": "my Social Security",
+      "url": "https://www.ssa.gov/myaccount/"
+    }
+  },
+  {
+    "id": "va",
+    "title": "Update your address with the VA",
+    "detail": "Also look up your new state’s veteran benefits, which can include tax breaks.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": 14,
+    "showIf": {
+      "benefits": [
+        "va"
+      ]
+    },
+    "link": {
+      "label": "VA.gov",
+      "url": "https://www.va.gov/"
+    }
+  },
+  {
+    "id": "veteran",
+    "title": "Check your new state's veteran benefits",
+    "detail": "Many states offer tax breaks, license plates, or a veteran mark on your license.",
+    "category": "life",
+    "urgency": "info",
+    "dueDays": 60,
+    "showIf": {
+      "military": [
+        "veteran"
+      ]
+    }
+  },
+  {
+    "id": "military",
+    "title": "Talk to your base legal office before changing your legal residence",
+    "detail": "Service members and spouses can often keep their home state for taxes and car registration.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": -14,
+    "showIf": {
+      "military": [
+        "active"
+      ]
+    }
+  },
+  {
+    "id": "medicaid",
+    "title": "Close Medicaid in your old state and apply in the new one",
+    "detail": "Medicaid doesn't transfer between states. Apply as soon as you arrive, and plan for a possible gap.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "health": [
+        "medicaid"
+      ]
+    },
+    "link": {
+      "label": "Medicaid.gov",
+      "url": "https://www.medicaid.gov/about-us/where-can-people-get-help-medicaid-chip"
+    }
+  },
+  {
+    "id": "medicare",
+    "title": "Update your address with Social Security for Medicare",
+    "detail": "Medicare Advantage and drug plans are regional, so moving out of your plan area lets you pick a new one.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": 0,
+    "showIf": {
+      "health": [
+        "medicare"
+      ]
+    },
+    "link": {
+      "label": "Medicare.gov",
+      "url": "https://www.medicare.gov/"
+    }
+  },
+  {
+    "id": "parent-plan",
+    "title": "Check that the plan covers doctors in the new area",
+    "detail": "Out-of-state coverage on a parent’s plan can be limited to emergencies.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": 0,
+    "showIf": {
+      "health": [
+        "parent"
+      ]
+    }
+  },
+  {
+    "id": "school",
+    "title": "Enroll the kids in their new school",
+    "detail": "Ask the old school to send records. The new district will want proof of address, usually a lease or closing papers.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": -30,
+    "showIf": {
+      "household": [
+        "schoolkids"
+      ]
+    }
+  },
+  {
+    "id": "childcare",
+    "title": "Get on childcare waitlists and find a pediatrician",
+    "detail": "Waitlists can be months long, so start before the move.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": -45,
+    "showIf": {
+      "household": [
+        "littlekids"
+      ]
+    }
+  },
+  {
+    "id": "pets",
+    "title": "Get vet records and license your pet in the new county",
+    "detail": "Bring vaccine and rabies records, update microchip contact details, and check whether your new county or building needs a pet license.",
+    "category": "life",
+    "urgency": "soon",
+    "dueDays": 30,
+    "showIf": {
+      "household": [
+        "pets"
+      ]
+    }
+  },
+  {
+    "id": "license-transfer",
+    "title": "Transfer your professional license",
+    "detail": "Check your new state's licensing board. Some fields have multistate compacts, and others take weeks to approve, so start early.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": -30,
+    "showIf": {
+      "license": [
+        "yes"
+      ]
+    }
+  },
+  {
+    "id": "firearms",
+    "title": "Check your new state's firearm laws before you move",
+    "detail": "Transport, storage, registration and permit rules vary. Some local rules are stricter than the state’s.",
+    "category": "life",
+    "urgency": "urgent",
+    "dueDays": -14,
+    "showIf": {
+      "firearms": [
+        "yes"
+      ]
+    }
+  },
+  {
+    "id": "estate",
+    "title": "Have your will and power of attorney reviewed",
+    "detail": "They usually stay valid, but a local lawyer can confirm they work under your new state’s law.",
+    "category": "life",
+    "urgency": "info",
+    "dueDays": 90,
+    "showIf": {
+      "estate": [
+        "yes",
+        "notsure"
+      ]
+    }
+  },
+  {
+    "id": "old-voter",
+    "title": "Make sure your old voter registration is canceled",
+    "detail": "Registering in the new state usually handles this. If it asks for your previous address, fill it in.",
+    "category": "government",
+    "urgency": "info",
+    "dueDays": 30,
+    "showIf": {
+      "voter": [
+        "yes",
+        "notsure"
+      ]
+    }
+  },
+  {
+    "id": "partner",
+    "title": "Make sure everyone moving updates their own accounts",
+    "detail": "Each adult needs their own USPS forwarding (unless you share a last name), license, and voter registration.",
+    "category": "before",
+    "urgency": "info",
+    "dueDays": -14,
+    "showIf": {
+      "household": [
+        "partner"
+      ]
+    }
   }
 ]

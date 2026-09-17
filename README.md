@@ -3,7 +3,7 @@
 Moving within the US means updating your address in dozens of places and handling state rules you've never heard of. Here to There does two things:
 
 1. **Finds everywhere your old address is on file.** It scans your Gmail for senders that mention your old street or ZIP, plus receipts and statements, so you're not relying on memory.
-2. **Builds a checklist for your move.** It's based on the state you're leaving, the state you're moving to, and a few quick questions (car, renting or buying, payroll, health insurance, business). Each task has a link to the right site and a due date counted from your move date.
+2. **Builds a checklist for your move.** It's based on the state you're leaving, the state you're moving to, and up to 17 quick questions, asked one at a time: housing, how you're moving, vehicles, work, health insurance, benefits, kids and pets, prescriptions, professional licenses, military service, college, firearms, estate documents, and voter registration. Each task has a link to the right site and a due date counted from your move date.
 
 ## Privacy
 
@@ -25,6 +25,8 @@ Open http://localhost:5173. Everything except the Gmail scan works right away.
 ### Turn on the Gmail scan
 
 Create a free Google Cloud project and an OAuth client ID. It takes about 10 minutes, and the steps are in [docs/google-setup.md](docs/google-setup.md). Then:
+
+Then either paste the client ID into the box on the **Accounts** tab (it's saved in your browser), or put it in `.env.local`:
 
 ```bash
 cp .env.example .env.local
@@ -54,6 +56,7 @@ Every state file lists its official sources and the date it was last checked. **
 
 ```
 src/
+  data/questions.json      the questions, and which ones are follow-ups
   data/general.json        tasks that apply to every move
   data/states/*.json       state-specific tasks (override general ones by id)
   checklist.ts             merges tasks and filters them by your answers

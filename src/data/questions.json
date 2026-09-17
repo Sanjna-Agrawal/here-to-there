@@ -1,0 +1,123 @@
+[
+  {
+    "key": "newHousing",
+    "q": "What's your situation at the new place?",
+    "why": "Decides insurance and property tax tasks.",
+    "type": "single",
+    "opts": [["rent", "Renting"], ["buy", "Buying"], ["family", "Staying with family or friends"]]
+  },
+  {
+    "key": "oldHousing",
+    "q": "And the place you're leaving?",
+    "why": "Renters need their deposit back. Owners need a plan for the home.",
+    "type": "single",
+    "opts": [["rent", "Renting"], ["own", "I own it"], ["family", "Living with family or friends"]]
+  },
+  {
+    "key": "oldHomePlan",
+    "q": "What's happening to the home you own?",
+    "why": "Selling, renting out, and leaving it empty each need different insurance and tax steps.",
+    "type": "single",
+    "askIf": { "oldHousing": ["own"] },
+    "opts": [["sell", "Selling it"], ["rentout", "Renting it out"], ["keep", "Keeping it, empty for now"], ["notsure", "Not sure yet"]]
+  },
+  {
+    "key": "moveMethod",
+    "q": "How are you moving your things?",
+    "why": "Interstate movers must be registered with the federal government, so it's worth checking.",
+    "type": "single",
+    "opts": [["movers", "Hiring movers"], ["diy", "Renting a truck or moving container"], ["light", "Just suitcases or a few boxes"], ["notsure", "Not sure yet"]]
+  },
+  {
+    "key": "vehicles",
+    "q": "Which of these do you have?",
+    "why": "Each one needs to be titled and registered in your new state.",
+    "type": "multi",
+    "opts": [["car", "Car"], ["plan", "Planning to buy a car"], ["motorcycle", "Motorcycle"], ["boat", "Boat or trailer"], ["rv", "RV"], ["none", "None of these"]]
+  },
+  {
+    "key": "work",
+    "q": "How do you make a living?",
+    "why": "Payroll, freelance income, and businesses each have their own address and tax updates.",
+    "type": "multi",
+    "opts": [["employee", "Employee (W-2)"], ["self", "Freelance or self-employed"], ["business", "I own a registered business"], ["student", "Student"], ["retired", "Retired"], ["none", "Not working right now"]]
+  },
+  {
+    "key": "jobMove",
+    "q": "What's happening with your job?",
+    "why": "Some employers can't pay people in every state, so HR needs to know early.",
+    "type": "single",
+    "askIf": { "work": ["employee"] },
+    "opts": [["remote", "Same job, working remotely from the new state"], ["transfer", "Same employer, new office"], ["newjob", "Starting a new job there"], ["notsure", "Not sure yet"]]
+  },
+  {
+    "key": "health",
+    "q": "Where's your health insurance from?",
+    "why": "Medicaid and Marketplace plans are state-based, so they don't move with you.",
+    "type": "single",
+    "opts": [["employer", "An employer"], ["marketplace", "The Marketplace (HealthCare.gov or a state site)"], ["medicaid", "Medicaid"], ["medicare", "Medicare"], ["parent", "A parent's plan"], ["other", "Something else or none"]]
+  },
+  {
+    "key": "benefits",
+    "q": "Do you get any of these benefits?",
+    "why": "Federal benefits follow you once your address is updated. State benefits usually have to be canceled and applied for again.",
+    "type": "multi",
+    "opts": [["snap", "SNAP (food stamps)"], ["ssi", "SSI or SSDI"], ["socialsecurity", "Social Security retirement"], ["unemployment", "Unemployment"], ["va", "VA benefits"], ["wic", "WIC"], ["none", "None of these"]]
+  },
+  {
+    "key": "household",
+    "q": "Who's moving with you?",
+    "why": "Kids need school and childcare plans. Pets need records and local licenses.",
+    "type": "multi",
+    "opts": [["schoolkids", "School-age kids"], ["littlekids", "Kids under 5"], ["pets", "Pets"], ["partner", "A partner or roommate"], ["solo", "Just me"]]
+  },
+  {
+    "key": "prescriptions",
+    "q": "Do you take regular prescriptions?",
+    "why": "Refills need to move to a pharmacy near your new home.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"]]
+  },
+  {
+    "key": "license",
+    "q": "Do you hold a state professional license?",
+    "why": "Nursing, teaching, law, real estate, cosmetology and similar licenses are issued by states and may need to be transferred.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"]]
+  },
+  {
+    "key": "military",
+    "q": "Are you in the military or a veteran?",
+    "why": "Service members have special rules for tax residency and car registration.",
+    "type": "single",
+    "opts": [["active", "Active duty, or a military spouse"], ["veteran", "Veteran"], ["no", "Neither"]]
+  },
+  {
+    "key": "college",
+    "q": "Are you in college or starting soon?",
+    "why": "In-state tuition usually requires living in the state for a while first.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"]]
+  },
+  {
+    "key": "firearms",
+    "q": "Are you moving any firearms?",
+    "why": "Rules for transporting and owning firearms differ by state.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"]]
+  },
+  {
+    "key": "estate",
+    "q": "Do you have a will, trust, or power of attorney?",
+    "why": "State law governs these documents, so they're worth a quick review after a move.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"], ["notsure", "Not sure"]]
+  },
+  {
+    "key": "voter",
+    "q": "Are you registered to vote where you live now?",
+    "why": "You'll register in your new state and make sure the old registration is canceled.",
+    "type": "single",
+    "opts": [["yes", "Yes"], ["no", "No"], ["notsure", "Not sure"]]
+  }
+]

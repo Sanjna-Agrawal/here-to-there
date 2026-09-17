@@ -1,17 +1,21 @@
 export type Urgency = 'urgent' | 'soon' | 'info';
 
-export type CategoryId = 'before' | 'car' | 'government' | 'money' | 'business' | 'accounts' | 'after';
+export type CategoryId = 'before' | 'car' | 'government' | 'money' | 'business' | 'life' | 'accounts' | 'after';
 
-export interface Answers {
-  car: 'yes' | 'plan' | 'no';
-  business: 'yes' | 'no';
-  payroll: 'yes' | 'no' | 'notsure';
-  health: 'employer' | 'marketplace' | 'other';
-  housing: 'rent' | 'own';
+/** Answers keyed by question key (see src/data/questions.json). Multi-select answers are arrays. */
+export type Answers = Record<string, string | string[]>;
+
+/** Show a task only when every listed answer includes one of the allowed values. */
+export type Condition = Record<string, string[]>;
+
+export interface Question {
+  key: string;
+  q: string;
+  why: string;
+  type: 'single' | 'multi';
+  opts: [string, string][];
+  askIf?: Condition;
 }
-
-/** Show a task only when every listed answer matches one of the allowed values. */
-export type Condition = { [K in keyof Answers]?: Answers[K][] };
 
 export interface Task {
   id: string;
